@@ -17,14 +17,14 @@
                     <a href="{% url 'post_new' %}" class="top-menu">
                         {% include './icons/file-earmark-plus.svg' %}
                     </a>
-                    <a href="#" class="top-menu">
+                    <a href="{% url 'logout' %}" class="top-menu">
                         Sign out
                     </a> 
                 {% else %}
                     <a href="{% url 'register' %}" class="top-menu">
                         Sign Up
                     </a>
-                    <a href="#" class="top-menu">
+                    <a href="{% url 'login' %}" class="top-menu">
                         Sign In
                     </a> 
                 {% endif %}
