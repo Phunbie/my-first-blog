@@ -10,7 +10,7 @@
             </time>
             <h2><a href="{% url 'post_detail_noedit' pk=post.pk %}">{{ post.title }}</a></h2>
             <small>Author: {{ post.author.username }}</small>
-            <p>{{ post.text|linebreaksbr }}</p>
+            <p>{{ post.text|slice:":150"|linebreaksbr }} <a href="{% url 'post_detail_noedit' pk=post.pk %}">More</a></p>
         </article>
     {% endfor %}
 {% endblock %}
