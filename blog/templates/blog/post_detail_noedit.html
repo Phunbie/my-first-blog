@@ -9,6 +9,30 @@
         {% endif %}
         <h2>{{ post.title }}</h2>
         <small>Author: {{ post.author.username }}</small>
-        <p>{{ post.text|linebreaksbr }}</p>
+        <p id="blog">{{ post.text|linebreaksbr }}</p>
+        <button type="button" onclick="myfunc()">summerise</button>
+        <p id="api"></p>
     </article>
+    <script>
+        function myfunc(){
+        const blog = document.getElementById("blog").innerText;
+        dat = fetch("https://funbi-summarize.hf.space/api/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+        data: [
+            blog,
+            ]
+        })})
+        .then(r => r.json())
+        .then(
+        r => {
+            //let data = r.data;
+            let summ = document.querySelector("#api");
+            summ.innerText = JSON.stringify(r.data[0]);
+        }
+        );
+        }
+        
+    </script>
 {% endblock %}
